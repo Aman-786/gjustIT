@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gjustit3/pages/Home.dart';
+import 'package:gjustit3/pages/auth/login.dart';
+import 'package:gjustit3/pages/auth/signup.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(),
+      home: const LoginScreen(),
     );
   }
 }
