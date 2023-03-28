@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gjustit3/common/color.dart';
+import 'package:gjustit3/pages/Home.dart';
+import 'package:gjustit3/pages/auth/signup.dart';
 import '../../common/authTextField.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -15,6 +17,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: AppColor.black,
       body: Padding(
         padding: const EdgeInsets.only(top: 50, left: 12, right: 12),
@@ -64,15 +67,23 @@ class _LoginScreenState extends State<LoginScreen> {
                       color: AppColor.black,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: const Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 20.0, horizontal: 30),
-                      child: Text(
-                        "LOGIN",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: "product",
-                            fontSize: 15),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 20.0, horizontal: 30),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HomeScreen()));
+                        },
+                        child: const Text(
+                          "LOGIN",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: "product",
+                              fontSize: 15),
+                        ),
                       ),
                     ),
                   ),
@@ -81,20 +92,31 @@ class _LoginScreenState extends State<LoginScreen> {
                   // new member??
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text(
+                    children: [
+                      const Text(
                         "new member ? ",
                         style: TextStyle(
                             color: AppColor.black,
                             fontFamily: "product",
                             fontSize: 15),
                       ),
-                      Text(
-                        " Register",
-                        style: TextStyle(
-                            color: Colors.blue,
-                            fontFamily: "product",
-                            fontSize: 15),
+                      InkWell(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const SignupScreen()));
+                        },
+                        child: const Padding(
+                          padding: EdgeInsets.all(18.0),
+                          child: Text(
+                            " Register",
+                            style: TextStyle(
+                                color: Colors.blue,
+                                fontFamily: "product",
+                                fontSize: 15),
+                          ),
+                        ),
                       ),
                     ],
                   )

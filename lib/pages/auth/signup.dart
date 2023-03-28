@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 // import 'package:gjustit3/common/blackButton.dart';
 import 'package:gjustit3/common/color.dart';
+import 'package:gjustit3/pages/auth/login.dart';
 
 import '../../common/authTextField.dart';
 
@@ -18,6 +20,7 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: AppColor.black,
       body: Padding(
         padding: const EdgeInsets.only(top: 50, left: 12, right: 12),
@@ -70,41 +73,61 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   //button
                   const SizedBox(height: 40),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: AppColor.black,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 20.0, horizontal: 30),
-                      child: Text(
-                        "Sign up",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: "product",
-                            fontSize: 15),
+                  InkWell(
+                    onTap: () {
+                      final snackBar = SnackBar(
+                        content: const Text("please sign in"),
+                        action: SnackBarAction(label: 'ok', onPressed: () {}),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: AppColor.black,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: 20.0, horizontal: 30),
+                        child: Text(
+                          "Sign up",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: "product",
+                              fontSize: 15),
+                        ),
                       ),
                     ),
                   ),
                   const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text(
+                    children: [
+                      const Text(
                         "already a member ? ",
                         style: TextStyle(
                             color: AppColor.black,
                             fontFamily: "product",
                             fontSize: 15),
                       ),
-                      SizedBox(width: 10),
-                      Text(
-                        " sign in",
-                        style: TextStyle(
-                            color: Colors.blue,
-                            fontFamily: "product",
-                            fontSize: 15),
+                      const SizedBox(width: 10),
+                      InkWell(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (contetx) => const LoginScreen()));
+                        },
+                        child: const Padding(
+                          padding: EdgeInsets.all(18.0),
+                          child: Text(
+                            " sign in",
+                            style: TextStyle(
+                                color: Colors.blue,
+                                fontFamily: "product",
+                                fontSize: 15),
+                          ),
+                        ),
                       ),
                     ],
                   )
