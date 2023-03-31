@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import '../model/jsonmodel.dart';
-import '../pages/padfview/pdfPage.dart';
+import '../pages/youtube/youtube.dart';
 
 class MainCard extends StatelessWidget {
   const MainCard({super.key, required this.readData});
@@ -27,8 +27,8 @@ class MainCard extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => PdfViewPage(
-                              title: dbmsList[index].url.toString(),
+                            builder: (context) => YtPlayer(
+                              url: dbmsList[index].url.toString(),
                             ),
                           ),
                         );
@@ -46,15 +46,24 @@ class MainCard extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: ClipRRect(
-                                borderRadius: BorderRadius.circular(6),
-                                child: Image(
-                                  fit: BoxFit.contain,
-                                  height: 100,
-                                  image: NetworkImage(
-                                    dbmsList[index].img.toString(),
-                                  ),
-                                ),
-                              ),
+                                  borderRadius: BorderRadius.circular(6),
+                                  child: CachedNetworkImage(
+                                    key: UniqueKey(),
+                                    imageUrl: dbmsList[index].img.toString(),
+                                    width: double.maxFinite,
+                                    fit: BoxFit.contain,
+                                    height: 100,
+                                    maxHeightDiskCache: 100,
+                                    placeholder: (context, url) => const Center(
+                                        child: CircularProgressIndicator()),
+                                    errorWidget: (context, url, error) {
+                                      return Container(
+                                        width: double.maxFinite,
+                                        height: double.maxFinite,
+                                        color: Colors.red,
+                                      );
+                                    },
+                                  )),
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
