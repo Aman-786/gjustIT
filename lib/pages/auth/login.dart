@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gjustit3/common/color.dart';
-import 'package:gjustit3/pages/Home.dart';
+import 'package:gjustit3/pages/Homepage/Home.dart';
 import 'package:gjustit3/pages/auth/signup.dart';
 import '../../common/authTextField.dart';
 
