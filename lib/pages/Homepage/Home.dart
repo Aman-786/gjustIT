@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' as services;
-import 'package:flutter/services.dart';
 import 'package:gjustit3/common/color.dart';
 import 'package:gjustit3/model/quotesmodel.dart';
 import '../../common/textHeadingMain.dart';
