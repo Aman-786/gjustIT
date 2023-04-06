@@ -24,6 +24,7 @@ class _PdfScreenState extends State<PdfScreen> {
     pdfController = PdfController(
         document:
             PdfDocument.openData(InternetFile.get(widget.url.toString())));
+    // print(pdfController.loadingState);
   }
 
   @override
@@ -59,21 +60,18 @@ class _PdfScreenState extends State<PdfScreen> {
         ),
       ),
       body: Center(
-        child: Visibility(
-          visible: false,
-          child: PdfView(
-            physics: const BouncingScrollPhysics(),
-            backgroundDecoration:
-                const BoxDecoration(color: AppColor.backgroundColor),
-            controller: pdfController,
-            scrollDirection: Axis.horizontal,
-            onDocumentLoaded: (document) => Container(
-                width: 100,
-                height: 100,
-                color: Colors.red,
-                child: const Center(child: CircularProgressIndicator())),
-            onDocumentError: (error) => Text(error.toString()),
-          ),
+        child: PdfView(
+          physics: const BouncingScrollPhysics(),
+          backgroundDecoration:
+              const BoxDecoration(color: AppColor.backgroundColor),
+          controller: pdfController,
+          scrollDirection: Axis.horizontal,
+          onDocumentLoaded: (document) => Container(
+              width: 100,
+              height: 100,
+              color: Colors.red,
+              child: const Center(child: CircularProgressIndicator())),
+          onDocumentError: (error) => Text(error.toString()),
         ),
       ),
     );

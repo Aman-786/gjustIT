@@ -6,6 +6,7 @@ import 'package:gjustit3/model/pdfmodel.dart';
 import 'package:flutter/services.dart' as services;
 import 'package:gjustit3/pages/Homepage/Home.dart';
 import 'package:gjustit3/pages/padfview/pdfView.dart';
+import 'package:gjustit3/pages/padfview/pdfscreen.dart';
 
 class PdfViewPage extends StatefulWidget {
   const PdfViewPage({
@@ -63,9 +64,10 @@ class _PdfViewPageState extends State<PdfViewPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => PdfScreen(
-                              title: pyqList[index].title.toString(),
-                              url: pyqList[index].url.toString()),
+                          builder: (context) => PdfScreen2(
+                            title: pyqList[index].title.toString(),
+                            url: pyqList[index].url.toString(),
+                          ),
                         ),
                       );
                     },
