@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gjustit3/common/color.dart';
 import 'package:gjustit3/pages/Homepage/Home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shimmer/shimmer.dart';
 
 class OnboadringScreen extends StatefulWidget {
   const OnboadringScreen({super.key});
@@ -57,13 +58,14 @@ class _OnboadringScreenState extends State<OnboadringScreen> {
                             CachedNetworkImage(
                               fit: BoxFit.contain,
                               placeholder: (context, url) {
-                                return Center(
-                                  child: Container(
-                                      width: 100,
-                                      height: 100,
-                                      color: AppColor.white,
-                                      child: const CircularProgressIndicator()),
-                                );
+                                return Shimmer.fromColors(
+                                    baseColor: Colors.grey[300]!,
+                                    highlightColor: Colors.grey[100]!,
+                                    child: Container(
+                                      color: Colors.grey[300],
+                                      width: double.maxFinite,
+                                      height: 300,
+                                    ));
                               },
                               imageUrl: abc[index].img.toString(),
                             ),

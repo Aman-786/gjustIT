@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../model/jsonmodel.dart';
 import '../pages/youtube/youtube.dart';
+import 'package:shimmer/shimmer.dart';
 
 class MainCard extends StatelessWidget {
   const MainCard({super.key, required this.readData});
@@ -54,8 +55,15 @@ class MainCard extends StatelessWidget {
                                     fit: BoxFit.contain,
                                     height: 100,
                                     maxHeightDiskCache: 100,
-                                    placeholder: (context, url) => const Center(
-                                        child: CircularProgressIndicator()),
+                                    placeholder: (context, url) =>
+                                        Shimmer.fromColors(
+                                            baseColor: Colors.grey[300]!,
+                                            highlightColor: Colors.grey[100]!,
+                                            child: Container(
+                                              color: Colors.grey[300],
+                                              width: double.maxFinite,
+                                              height: 100,
+                                            )),
                                     errorWidget: (context, url, error) {
                                       return Container(
                                         width: double.maxFinite,

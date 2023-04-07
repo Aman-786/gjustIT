@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:internet_file/internet_file.dart';
 import 'package:pdfx/pdfx.dart';
+import 'package:shimmer/shimmer.dart';
 import '../../common/color.dart';
 
 class PdfScreen2 extends StatefulWidget {
@@ -78,7 +79,17 @@ class _PdfScreen2State extends State<PdfScreen2> {
               onDocumentError: (error) => Text(error.toString()),
             );
           } else {
-            return const Center(child: CircularProgressIndicator());
+            return Shimmer.fromColors(
+              baseColor: Colors.grey[300]!,
+              highlightColor: Colors.grey[100]!,
+              child: Center(
+                child: Container(
+                  color: AppColor.backgroundColor,
+                  width: double.maxFinite,
+                  height: 400,
+                ),
+              ),
+            );
           }
         },
       ),
