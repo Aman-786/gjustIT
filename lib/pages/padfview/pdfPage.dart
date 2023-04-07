@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:gjustit3/common/color.dart';
 import 'package:gjustit3/model/pdfmodel.dart';
 import 'package:flutter/services.dart' as services;
-import 'package:gjustit3/pages/Homepage/Home.dart';
-import 'package:gjustit3/pages/padfview/pdfView.dart';
 import 'package:gjustit3/pages/padfview/pdfscreen.dart';
 
 class PdfViewPage extends StatefulWidget {
@@ -31,8 +29,7 @@ class _PdfViewPageState extends State<PdfViewPage> {
         ),
         leading: IconButton(
             onPressed: () {
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => const HomeScreen()));
+              Navigator.pop(context);
             },
             icon: const Icon(
               Icons.arrow_back_ios_new_rounded,

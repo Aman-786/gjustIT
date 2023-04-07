@@ -25,6 +25,12 @@ class _PdfScreen2State extends State<PdfScreen2> {
   }
 
   @override
+  void dispose() {
+    pdfController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' as services;
 import 'package:gjustit3/common/color.dart';
 import 'package:gjustit3/model/quotesmodel.dart';
+import 'package:gjustit3/pages/onboarding/onBoarding.dart';
+import 'package:gjustit3/pages/padfview/pdfPage.dart';
+import 'package:pdfx/pdfx.dart';
 import '../../common/textHeadingMain.dart';
 import '../../listview/card.dart';
 import '../../model/jsonmodel.dart';
@@ -118,6 +121,47 @@ class _HomeScreenState extends State<HomeScreen> {
             );
           }
         },
+      ),
+      bottomNavigationBar: Container(
+        height: 65,
+        width: MediaQuery.of(context).size.width - 60,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Center(
+            child: Row(
+          children: [
+            Expanded(
+                child: GestureDetector(
+              onTap: () {
+                print("clicked");
+              },
+              child: const Icon(Icons.home_rounded),
+            )),
+            Expanded(
+                child: Center(
+                    child: IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const PdfViewPage()));
+                        },
+                        icon: const Icon(Icons.menu_book_rounded)))),
+            Expanded(
+                child: Center(
+                    child: IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const OnboadringScreen()));
+                        },
+                        icon: const Icon(Icons.person_2_rounded)))),
+          ],
+        )),
       ),
     );
   }

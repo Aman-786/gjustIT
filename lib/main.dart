@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:gjustit3/common/color.dart';
 import 'package:gjustit3/pages/Homepage/Home.dart';
-import 'package:gjustit3/pages/padfview/pdfPage.dart';
+import 'package:gjustit3/pages/onboarding/onBoarding.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+bool show = true;
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final pref = await SharedPreferences.getInstance();
+  show = pref.getBool('ON_BORDING') ?? true;
   runApp(const MyApp());
 }
 
@@ -28,7 +33,7 @@ class MyApp extends StatelessWidget {
           child: Image.asset("asstes/images/logo.png"),
         ),
         backgroundColor: AppColor.backgroundColor,
-        nextScreen: const PdfViewPage(),
+        nextScreen: show ? const OnboadringScreen() : const HomeScreen(),
         splashTransition: SplashTransition.scaleTransition,
         animationDuration: const Duration(seconds: 2),
         // pageTransitionType: PageTransitionType.scale,
